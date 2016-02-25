@@ -1,9 +1,9 @@
 #Statham
 
-    ```npm i```
+```npm i```
 
-    ```npm run babel```    
+```npm run babel```    
 
-    ```npm run live-server```
-    
+```npm run live-server```
+
     
