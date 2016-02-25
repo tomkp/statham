@@ -1,3 +1,4 @@
+require("./style.css");
 
 class HelloMessage extends React.Component {
     render() {
