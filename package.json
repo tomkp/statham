@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel": "babel src --out-file bundle.js --watch",
-    "live-server": "live-server --port=3004",
     "webpack": "webpack --progress --colors --watch",
     "webpack-server": "webpack-dev-server --port 3001 --progress --colors"
   },

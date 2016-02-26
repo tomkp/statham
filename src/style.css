@@ -1,4 +1,63 @@
-body {
-    display: flex;
-    background: #eee;
+*, *:before, *:after {
+    box-sizing: border-box;
+    position: relative;
+}
+
+body, html, #app {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5rem;
+    height: 100%;
+    min-height: 100%;
+}
+
+.header {
+    background: #173358;
+    color: #fff;
+    padding: 1rem;
+}
+
+.content {
+    background: #F2F5F8;
+    padding: 1rem;
+}
+
+.scrollable {
+    overflow-y: auto;
+    white-space: pre;
+    padding: 1rem;
+}
+
+.footer {
+    background: #D1D9E6;
+    padding: 1rem;
+}
+
+.sidebar {
+    background: #6479A1;
+    color: #fff;
+    padding: 1rem;
+}
+
+.results {
+    border-right: 1px solid #ddd;
+    width: 14rem;
+    background: #F2F5F8;
+}
+
+.result {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+}
+
+.content-title {
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+    background: #A3AFCA;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .5);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
