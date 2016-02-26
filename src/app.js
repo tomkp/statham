@@ -2,10 +2,11 @@ import './flexbox.css';
 import './style.css';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 
-const Application = () => {
+const Application = (props) => {
     return (
         <div className="column application">
             <Header />
@@ -16,10 +17,7 @@ const Application = () => {
                         <div className="row">
                             <Results />
                             <div className="flex">
-                                <div className="column">
-                                    <ContentTitle />
-                                    <Content />
-                                </div>
+                                {props.children}
                             </div>
                         </div>
                     </div>
@@ -52,7 +50,18 @@ const ContentTitle = () => {
 };
 
 const Content = () => {
-    return <div className="flex scrollable content">Content</div>
+    return (
+        <div className="column">
+            <ContentTitle />
+            <div className="flex scrollable content">Content</div>
+        </div>
+    )
 };
 
-ReactDOM.render(<Application />, document.getElementById('app'));
+render((
+    <Router history={hashHistory}>
+        <Route path="/" component={Application} >
+            <IndexRoute component={Content}/>
+        </Route>
+    </Router>
+), document.getElementById('app'));
