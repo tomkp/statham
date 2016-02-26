@@ -17,7 +17,12 @@ const Application = ({children}) => {
                         <div className="row">
                             <Results />
                             <div className="flex">
-                                {children}
+                                {children &&
+                                React.cloneElement(children, {
+                                    title: "Home Title",
+                                    content: "Some content"
+                                })
+                                }
                             </div>
                         </div>
                     </div>
@@ -45,15 +50,15 @@ const Results = () => {
     )
 };
 
-const ContentTitle = () => {
-    return <div className="fixed content-title">Content Title - Everyone knows and loves the z-index for determining depth ordering of elements on a page. Not all z-indexes are created equal, however: an element’s z-index only determines its ordering relative to other elements in the same stacking context.</div>
+const ContentTitle = ({title}) => {
+    return <div className="fixed content-title">{title}</div>
 };
 
-const Content = () => {
+const Content = ({title, content}) => {
     return (
         <div className="column">
-            <ContentTitle />
-            <div className="flex scrollable content">Content</div>
+            <ContentTitle title={title} />
+            <div className="flex scrollable content">{content}</div>
         </div>
     )
 };
