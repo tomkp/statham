@@ -7,7 +7,7 @@
     "babel": "babel src --out-file bundle.js --watch",
     "live-server": "live-server --port=3004",
     "webpack": "webpack --progress --colors --watch",
-    "webpack-server": "webpack-dev-server --progress --colors"
+    "webpack-server": "webpack-dev-server --port 3001 --progress --colors"
   },
   "keywords": [],
   "author": "tom@tomkp.com",
@@ -23,6 +23,7 @@
     "live-server": "^0.9.2",
     "postcss": "^5.0.16",
     "postcss-loader": "^0.8.1",
+    "postcss-normalize": "^0.1.2",
     "precss": "^1.4.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
