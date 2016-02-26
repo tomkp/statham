@@ -1,6 +1,10 @@
 require("./flexbox.css");
 require("./style.css");
 
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 const Application = () => {
     return (
         <div className="column application">
