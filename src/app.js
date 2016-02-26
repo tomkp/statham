@@ -6,7 +6,7 @@ import {render} from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 
-const Application = (props) => {
+const Application = ({children}) => {
     return (
         <div className="column application">
             <Header />
@@ -17,7 +17,7 @@ const Application = (props) => {
                         <div className="row">
                             <Results />
                             <div className="flex">
-                                {props.children}
+                                {children}
                             </div>
                         </div>
                     </div>
