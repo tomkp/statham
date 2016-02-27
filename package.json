@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --progress --colors --watch",
-    "webpack-server": "webpack-dev-server --port 3001 --progress --colors"
+    "build": "webpack --progress --colors --watch",
+    "start": "webpack-dev-server --port 3001 --inline --progress --colors"
   },
   "keywords": [],
   "author": "tom@tomkp.com",
