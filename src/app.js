@@ -18,10 +18,10 @@ const Application = ({children}) => {
                             <Results />
                             <div className="flex">
                                 {children &&
-                                React.cloneElement(children, {
-                                    title: "Home Title",
-                                    content: "Some content"
-                                })
+                                    React.cloneElement(children, {
+                                        title: "Home Title",
+                                        content: "Some content"
+                                    })
                                 }
                             </div>
                         </div>
