@@ -1,7 +1,3 @@
-var autoprefixer = require('autoprefixer');
-var precss = require('precss');
-var normalize = require('postcss-normalize');
-
 
 module.exports = {
     entry: "./src/app.js",
@@ -23,6 +19,12 @@ module.exports = {
         ]
     },
     postcss: function () {
-        return [autoprefixer, precss, normalize];
+        return [
+            require('autoprefixer'),
+            require('precss'),
+            require('postcss-normalize'),
+            require('postcss-less-vars'),
+            require('postcss-nesting')
+        ];
     }
 };
