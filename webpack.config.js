@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    devtool: 'eval',
     entry: "./src/app.js",
     output: {
         path: path.join(__dirname, 'dist'),

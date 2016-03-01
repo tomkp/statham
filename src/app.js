@@ -1,5 +1,3 @@
-import './colours.scss';
-import './flexbox.scss';
 import './style.scss';
 
 import React from 'react';
