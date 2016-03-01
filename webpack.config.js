@@ -23,7 +23,6 @@ module.exports = {
     postcss: function () {
         return [
             require('precss'),
-            require('postcss-normalize'),
             require('autoprefixer')
         ];
     }
