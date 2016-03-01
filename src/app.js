@@ -1,5 +1,6 @@
-import './flexbox.css';
-import './style.css';
+import './colours.scss';
+import './flexbox.scss';
+import './style.scss';
 
 import React from 'react';
 import {render} from 'react-dom';

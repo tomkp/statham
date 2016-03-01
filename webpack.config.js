@@ -8,23 +8,22 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
+                test: /\.scss$|.less$|\.css$/,
                 loader: "style-loader!css-loader!postcss-loader"
             },
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel' // 'babel-loader' is also a legal name to reference
+                loader: 'babel'
             }
         ]
     },
     postcss: function () {
         return [
-            require('autoprefixer'),
             require('precss'),
-            require('postcss-normalize'),
-            require('postcss-less-vars'),
-            require('postcss-nesting')
+            require('autoprefixer'),
+            require('postcss-import'),
+            require('postcss-normalize')
         ];
     }
 };
