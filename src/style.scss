@@ -1,10 +1,5 @@
 @import "../node_modules/normalize.css/normalize.css";
 @import "./html.scss";
 @import "./flexbox.scss";
+@import "./mixins.scss";
 
-
-.scrollable {
-    overflow-y: auto;
-    white-space: pre;
-    padding: 1rem;
-}

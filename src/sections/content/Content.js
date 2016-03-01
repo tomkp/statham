@@ -9,7 +9,7 @@ export default ({title, content}) => {
     return (
         <div className="column">
             <ContentTitle title={title} />
-            <div className="flex scrollable content">{content}</div>
+            <div className="flex content">{content}</div>
         </div>
     )
 };

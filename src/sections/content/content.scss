@@ -1,19 +1,21 @@
 @import "../../colours.scss";
+@import "../../mixins.scss";
 
 .content {
+  @extend .scrollable;
+
   background: $white;
   padding: 1rem;
 }
 
 .content-title {
+  @extend .truncate;
+  @extend .shadow;
+
   z-index: 1;
   font-size: 2rem;
   font-weight: bold;
   padding: 1rem;
   background: $blue;
   color: #fff;
-  box-shadow: -8px 0 8px 0 rgba(0, 0, 0, .5);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
