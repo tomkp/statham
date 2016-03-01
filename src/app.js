@@ -4,6 +4,12 @@ import React from 'react';
 import {render} from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
+import Header from './sections/header/Header';
+import Footer from './sections/footer/Footer';
+import Results from './sections/results/Results';
+import Sidebar from './sections/sidebar/Sidebar';
+import Content from './sections/content/Content';
+
 
 const Application = ({children}) => {
     return (
@@ -27,40 +33,12 @@ const Application = ({children}) => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
 
-const Header = () => {
-    return <div className="fixed header">Header</div>
-};
 
-const Sidebar = () => {
-    return <div className="fixed sidebar">Sidebar</div>
-};
-
-const Results = () => {
-    return (
-        <div className="fixed results">
-            <div className="result">one</div>
-            <div className="result">two</div>
-            <div className="result">three</div>
-        </div>
-    )
-};
-
-const ContentTitle = ({title}) => {
-    return <div className="fixed content-title">{title}</div>
-};
-
-const Content = ({title, content}) => {
-    return (
-        <div className="column">
-            <ContentTitle title={title} />
-            <div className="flex scrollable content">{content}</div>
-        </div>
-    )
-};
 
 render((
     <Router history={hashHistory}>
