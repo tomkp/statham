@@ -2,8 +2,8 @@
 
 ```npm i```
 
-```npm run babel```    
+```npm start```    
 
-```npm run live-server```
+[http://localhost:3001/](http://localhost:3001/)
 
     

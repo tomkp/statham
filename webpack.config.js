@@ -2,7 +2,7 @@
 module.exports = {
     entry: "./src/app.js",
     output: {
-        path: __dirname,
+        path: __dirname + "/dist",
         filename: "bundle.js"
     },
     module: {
@@ -21,9 +21,8 @@ module.exports = {
     postcss: function () {
         return [
             require('precss'),
-            require('autoprefixer'),
-            require('postcss-import'),
-            require('postcss-normalize')
+            require('postcss-normalize'),
+            require('autoprefixer')
         ];
     }
 };
