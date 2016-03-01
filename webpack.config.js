@@ -1,8 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
+
 
 module.exports = {
-    devtool: 'eval',
-    entry: "./src/app.js",
+    devtool: 'cheap-module-eval-source-map',
+    entry: [
+        'webpack-hot-middleware/client',
+        './src/app.js'
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "bundle.js"
@@ -20,6 +25,11 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
     postcss: function () {
         return [
             require('precss'),
