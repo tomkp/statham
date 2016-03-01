@@ -23,7 +23,6 @@
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "live-server": "^0.9.2",
-    "node-libs-browser": "^1.0.0",
     "postcss": "^5.0.18",
     "postcss-loader": "^0.8.1",
     "precss": "^1.4.0",
@@ -34,6 +33,7 @@
     "webpack-hot-middleware": "^2.8.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.6.1",
     "history": "^2.0.0",
     "normalize.css": "^3.0.3",
     "react": "^0.14.7",
