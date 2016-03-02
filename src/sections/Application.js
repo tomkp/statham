@@ -30,15 +30,7 @@ class Application extends React.Component {
         this.state = {
             activeResult: results[0]
         };
-        this.selectResult = this.selectResult.bind(this);
     }
-
-    selectResult(result) {
-        console.info('result', result);
-        this.setState({
-            activeResult: result
-        });
-    };
 
     render() {
         return (
@@ -49,7 +41,11 @@ class Application extends React.Component {
                         <Sidebar />
                         <div className="flex">
                             <div className="row">
-                                <Results results={results} selectResult={this.selectResult}/>
+                                <Results results={results} selectResult={(result) => {
+                                    this.setState({
+                                        activeResult: result
+                                    });
+                                }} />
                                 <div className="flex">
                                     {this.props.children &&
                                     React.cloneElement(this.props.children, {
