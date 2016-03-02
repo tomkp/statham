@@ -7,7 +7,7 @@
     "build": "webpack --progress --colors --watch",
     "start-old": "webpack-dev-server --port 3001 --content-base dist/ --inline --progress --colors",
     "start": "node server.js",
-    "publish": "surge dist statham.surge.sh"
+    "publish": "webpack && surge dist statham.surge.sh"
   },
   "keywords": [],
   "author": "tom@tomkp.com",
