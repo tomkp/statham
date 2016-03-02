@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "deploy": "webpack && surge dist statham.surge.sh",
-    "test": "ava"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "tom@tomkp.com",
