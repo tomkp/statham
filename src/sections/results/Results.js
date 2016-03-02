@@ -1,12 +1,13 @@
 import React from 'react';
+import Result from './Result';
 import './results.scss';
 
-export default () => {
+
+
+export default ({results, selectResult}) => {
     return (
         <div className="fixed results">
-            <div className="result">one</div>
-            <div className="result">two</div>
-            <div className="result">three</div>
+            { results.map(result => <Result key={result.id} result={result} selectResult={selectResult} /> )}
         </div>
     )
 };
