@@ -27,9 +27,6 @@ class Application extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            activeResult: undefined
-        };
     }
 
     render() {
@@ -41,17 +38,10 @@ class Application extends React.Component {
                         <Sidebar />
                         <div className="flex">
                             <div className="row">
-                                <Results results={results} selectResult={(result) => {
-                                    this.setState({
-                                        activeResult: result
-                                    });
-                                }} />
+                                <Results results={results} />
                                 <div className="flex">
-                                    {this.props.children && this.state.activeResult &&
-                                    React.cloneElement(this.props.children, {
-                                        title: this.state.activeResult.name,
-                                        content: this.state.activeResult.value
-                                    })
+                                    {this.props.children &&
+                                        React.cloneElement(this.props.children, { results: results})
                                     }
                                 </div>
                             </div>

@@ -5,11 +5,29 @@ const ContentTitle = ({title}) => {
     return <div className="fixed content-title">{title}</div>
 };
 
-export default ({title, content}) => {
-    return (
-        <div className="column">
-            <ContentTitle title={title} />
-            <div className="flex content">{content}</div>
-        </div>
-    )
-};
+
+class Content extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount() {
+        this.setState({ result: this.props.results[this.props.params.id]});
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ result: this.props.results[nextProps.params.id]});
+    }
+
+    render() {
+        return (
+            <div className="column">
+                <ContentTitle title={this.state.result.name}/>
+                <div className="flex content">{this.state.result.value}</div>
+            </div>
+        );
+    }
+}
+
+export default Content;

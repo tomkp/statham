@@ -1,6 +1,10 @@
 @import "../../colours.scss";
 @import "../../mixins.scss";
 
+.no-content {
+  @extend .stripes;
+}
+
 .content {
   @extend .scrollable;
 
@@ -18,3 +22,4 @@
   background: $blue;
   color: #fff;
 }
+
