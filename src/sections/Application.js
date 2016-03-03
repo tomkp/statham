@@ -28,7 +28,7 @@ class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeResult: results[0]
+            activeResult: undefined
         };
     }
 
@@ -47,7 +47,7 @@ class Application extends React.Component {
                                     });
                                 }} />
                                 <div className="flex">
-                                    {this.props.children &&
+                                    {this.props.children && this.state.activeResult &&
                                     React.cloneElement(this.props.children, {
                                         title: this.state.activeResult.name,
                                         content: this.state.activeResult.value
