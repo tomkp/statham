@@ -6,7 +6,7 @@ import './results.scss';
 
 export default ({results, selectResult}) => {
     return (
-        <div className="fixed results">
+        <div className="results">
             { results.map(result => <Result key={result.id} result={result} selectResult={selectResult} /> )}
         </div>
     )

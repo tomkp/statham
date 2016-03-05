@@ -2,7 +2,7 @@ import React from 'react';
 import './content.scss';
 
 const ContentTitle = ({title}) => {
-    return <div className="fixed content-title">{title}</div>
+    return <div className="content-title">{title}</div>
 };
 
 
