@@ -3,9 +3,11 @@
 .header {
   background: $black;
   color: #fff;
-  padding: 1rem;
+  height: 3rem;
+  line-height: 3rem;
 
-  a {
+  .logo {
+    padding: 0 1rem;
     font-size: 2rem;
     color: #fff;
     text-decoration: none;
