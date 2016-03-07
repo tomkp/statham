@@ -36,15 +36,11 @@ class Application extends React.Component {
                 <div className="flex">
                     <div className="row">
                         <Sidebar />
+                        <Results results={results} />
                         <div className="flex">
-                            <div className="row">
-                                <Results results={results} />
-                                <div className="flex">
-                                    {this.props.children &&
-                                        React.cloneElement(this.props.children, { results: results})
-                                    }
-                                </div>
-                            </div>
+                            {this.props.children &&
+                                React.cloneElement(this.props.children, { results: results})
+                            }
                         </div>
                     </div>
                 </div>
