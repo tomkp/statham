@@ -24,7 +24,7 @@ class Content extends React.Component {
         return (
             <div className="column">
                 <ContentTitle title={this.state.result.name}/>
-                <div className="flex content">{this.state.result.value}</div>
+                <div className="flex scrollable content">{this.state.result.value}</div>
             </div>
         );
     }
