@@ -1,9 +1,16 @@
 @import "../../colours.scss";
+@import "../../mixins.scss";
 
 .results {
   width: 14rem;
   background: $silver;
   z-index: 2;
+}
+
+@media (max-width: 400px) {
+  .results {
+    width: 6rem;
+  }
 }
 
 .result {
@@ -15,6 +22,8 @@
     border-bottom: 1px solid #aaa;
     padding: 1rem;
     cursor: pointer;
+
+    @extend .truncate;
   }
 
   .active {
