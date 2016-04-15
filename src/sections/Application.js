@@ -54,7 +54,7 @@ class Application extends React.Component {
                 <div className="flex row">
                     <Sidebar />
                     <Results results={results}/>
-                    <div className="flex">
+                    <div className="flex column">
                         {this.props.children &&
                         React.cloneElement(this.props.children, {results: results})
                         }
