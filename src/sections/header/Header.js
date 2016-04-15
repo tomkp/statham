@@ -5,12 +5,10 @@ import SearchBar from './searchbar/SearchBar';
 
 export default () => {
     return (
-        <div className="header">
-            <div className="row">
-                <Link to={`/`} className="logo">⍟</Link>
-                <div className="flex"></div>
-                <SearchBar />
-            </div>
+        <div className="header row">
+            <Link to={`/`} className="logo">⍟</Link>
+            <div className="flex"></div>
+            <SearchBar />
         </div>
     )
 };
