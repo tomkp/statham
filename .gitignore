@@ -3,6 +3,7 @@
 node_modules/
 log/
 bundle.js
+main.css
 *.log
 *.map
 .DS_Store

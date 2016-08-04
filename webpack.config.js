@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const minify = false;
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     entry: [
         'webpack-hot-middleware/client',
         './src/app.js'
@@ -14,9 +16,16 @@ module.exports = {
     },
     module: {
         loaders: [
+            // {
+            //     test: /\.scss$|\.css$/,
+            //     loader: "style-loader!css-loader!postcss-loader"
+            // },
             {
-                test: /\.scss$|\.css$/,
-                loader: "style-loader!css-loader!postcss-loader"
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loader: ExtractTextPlugin.extract('style', [
+                    `css?-url&sourceMap${minify ? '&minimize' : ''}`,
+                    'postcss?sourceMap&outputStyle=expanded'].join('!'))
             },
             {
                 test: /\.jsx?$/,
@@ -26,6 +35,8 @@ module.exports = {
         ]
     },
     plugins: [
+        new ExtractTextPlugin('[name].css'),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
