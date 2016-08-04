@@ -3,11 +3,3 @@ node_js:
 - stable
 after_script:
 - npm run deploy
-deploy:
-  provider: npm
-  email: tom@tomkp.com
-  api_key:
-    secure: CGho7EZxDR1r8a7/CwDCFVC8PJjrvlbRaD8YNWX1CKSF2IlReOuJ4XuKGULjskoESxL2hrgN8457MNDTMKtr0R1lm7qDdT4CmnhgoFb9x9hbOCOtBby0DP1hsBtYGVNlOHoNlkzBgVLkNIs3Pb/f/9f451TkbosqMMoUkThFvP3+pw+uB9lWQh9xkf7hwYamvOblPYwZMVkmd2eKzqCy9gHNCqYKauYdVsdJ1pCz//6sT8B2kOWq/eAGVQrfbD2S3KimQqTCH2Ur/oHaRtZsqiNtYA5yXFv/Z44pdb7SeZgQlyXO9dXa0iVg4mw0JqHMA2PapYotoI6zzkQF2Tmm5VfiHtW9fAkp2o+3pT5U8x6iV7j+Bl3nZGJ1z8pZr7hyRkRr/SmS4RRSZ3+vdtQnqjVvcU6zxMLbfNSikLSKl9BSwtj/VFLOO9poRdu902ZbAwcGfJQBEXwnjX4qhzC6tG3yd3EMeWzDupY/5xPjvGHLNHD+RT2z67y7VRsHuQ54sxi7QVea3WgCgIk4Uf9jPtoXN6HPTf/uRcaW+aybJcsBwg+WZnPAOVs7YqsF6DaEJdUvNtrcYyKDHmG9w3GcXbpdWHsFOC1gsm4qMBZrFQ8u04j2qr8RG3i5Myqpxkn1RpNDHpShw/d332jpkPofCreqXvwUXd9EQFIrgf9BUjI=
-  on:
-    tags: true
-    repo: tomkp/statham
