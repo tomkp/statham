@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack && node server.js",
     "test": "mocha",
+    "test:ui": "nightwatch",
     "deploy": "webpack && surge dist statham.surge.sh"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
     "express": "^4.14.0",
     "live-server": "^1.0.0",
     "mocha": "^3.0.1",
+    "nightwatch": "^0.9.6",
     "postcss": "^5.1.1",
     "postcss-color-function": "^2.0.1",
     "postcss-loader": "^0.9.1",
