@@ -9,6 +9,8 @@
     background: color($black lightness(20%));
     border: 1px solid $black;
     border-radius: 2px;
+    color: $white;
+    outline: none;
 
     max-height: 2rem;
     margin: .5rem 0;
