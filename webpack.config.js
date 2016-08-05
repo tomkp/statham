@@ -1,8 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const minify = false;
+
+const isProd = (process.env.NODE_ENV === 'production');
+
+
+const minify = true;
+const externalStyleSheets = ExtractTextPlugin.extract('style', [
+    `css?-url&sourceMap${minify ? '&minimize' : ''}`,
+    'postcss?sourceMap&outputStyle=expanded'].join('!'));
+
+const inlineStyleSheets = "style-loader!css-loader!postcss-loader";
 
 module.exports = {
     devtool: 'source-map',
@@ -12,20 +23,15 @@ module.exports = {
     ],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "bundle.js"
+        filename: '[name].[hash].js',
+        publicPath: '/'
     },
     module: {
         loaders: [
-            // {
-            //     test: /\.scss$|\.css$/,
-            //     loader: "style-loader!css-loader!postcss-loader"
-            // },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract('style', [
-                    `css?-url&sourceMap${minify ? '&minimize' : ''}`,
-                    'postcss?sourceMap&outputStyle=expanded'].join('!'))
+                loader: (isProd?externalStyleSheets:inlineStyleSheets)
             },
             {
                 test: /\.jsx?$/,
@@ -35,11 +41,22 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin('[name].[chunkhash].css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            favicon: 'src/favicon.png',
+            inject: 'body',
+        }),
+        new CleanWebpackPlugin(['dist'], {
+            root: process.cwd()
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        }),
     ],
     postcss: function () {
         return [
