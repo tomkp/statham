@@ -16,11 +16,15 @@ const externalStyleSheets = ExtractTextPlugin.extract('style', [
 const inlineStyleSheets = "style-loader!css-loader!postcss-loader";
 
 module.exports = {
+    debug: !isProd,
+
     devtool: 'source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        './src/application/Root.js'
-    ],
+
+    entry: {
+        webpack: 'webpack-hot-middleware/client',
+        main: './src/application/Root.js',
+        vendor: ['react']
+    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].[hash].js',
@@ -36,7 +40,14 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel'
+                loader: 'babel',
+                query: {
+                    env: {
+                        development: {
+                            presets: ['react-hmre']
+                        }
+                    }
+                }
             }
         ]
     },
@@ -57,6 +68,10 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
+        new webpack.optimize.CommonsChunkPlugin(
+            /* chunkName= */"vendor",
+            /* filename= */"vendor.bundle.js"
+        )
     ],
     postcss: function () {
         return [
