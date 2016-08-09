@@ -1,5 +1,8 @@
+
 const path = require('path');
 const webpack = require('webpack');
+const fs =require('fs');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -15,7 +18,10 @@ const externalStyleSheets = ExtractTextPlugin.extract('style', [
 
 const inlineStyleSheets = "style-loader!css-loader!postcss-loader";
 
-module.exports = {
+const babelrc = JSON.parse(fs.readFileSync('./.babelrc').toString());
+
+
+const config = {
     debug: !isProd,
 
     devtool: 'source-map',
@@ -38,16 +44,10 @@ module.exports = {
                 loader: (isProd?externalStyleSheets:inlineStyleSheets)
             },
             {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                test: /\.js$/,
                 loader: 'babel',
-                query: {
-                    env: {
-                        development: {
-                            presets: ['react-hmre']
-                        }
-                    }
-                }
+                exclude: /node_modules|lib/,
+                query: babelrc
             },
             {
                 test: /\.(png|jpg)$/,
@@ -84,3 +84,21 @@ module.exports = {
         ];
     }
 };
+
+
+if (process.env.NODE_ENV === 'production') {
+    config.plugins = config.plugins.concat([
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
+        })
+    ]);
+}
+
+module.exports = config;
+
+
