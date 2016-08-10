@@ -8,7 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const isProd = (process.env.NODE_ENV === 'production');
 
 
 const minify = true;
@@ -86,16 +85,6 @@ const config = {
         ];
     }
 };
-
-
-if (process.env.NODE_ENV === 'production') {
-    config.plugins = config.plugins.concat([
-        ,
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
-        })
-    ]);
-}
 
 module.exports = config;
 

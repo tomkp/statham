@@ -8,9 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const isProd = (process.env.NODE_ENV === 'production');
-
-
 const minify = true;
 const externalStyleSheets = ExtractTextPlugin.extract('style', [
     `css?-url&sourceMap${minify ? '&minimize' : ''}`,
