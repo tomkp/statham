@@ -16,18 +16,15 @@ const externalStyleSheets = ExtractTextPlugin.extract('style', [
     `css?-url&sourceMap${minify ? '&minimize' : ''}`,
     'postcss?sourceMap&outputStyle=expanded'].join('!'));
 
-const inlineStyleSheets = "style-loader!css-loader!postcss-loader";
 
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc').toString());
 
 
 const config = {
-    debug: !isProd,
 
-    devtool: 'source-map',
+    devtool: 'cheap-module-source-map',
 
     entry: {
-        webpack: 'webpack-hot-middleware/client',
         main: './src/application/Root.js',
         vendor: ['react']
     },
@@ -41,7 +38,7 @@ const config = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: (isProd?externalStyleSheets:inlineStyleSheets)
+                loader: externalStyleSheets
             },
             {
                 test: /\.js$/,
@@ -59,7 +56,6 @@ const config = {
         new ExtractTextPlugin('[name].[chunkhash].css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -70,12 +66,18 @@ const config = {
             root: process.cwd()
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         }),
-        new webpack.optimize.CommonsChunkPlugin(
-            /* chunkName= */"vendor",
-            /* filename= */"vendor.bundle.js"
-        )
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.AggressiveMergingPlugin()
+
     ],
     postcss: function () {
         return [
@@ -88,11 +90,7 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
     config.plugins = config.plugins.concat([
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        ,
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
         })

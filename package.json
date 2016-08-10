@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "start:dev": "NODE_ENV=development node server.js",
-    "build:dev": "NODE_ENV=development webpack --colors",
-    "start:prod": "NODE_ENV=production node server.js",
-    "build:prod": "NODE_ENV=production webpack -p --colors",
+    "build:dev": "NODE_ENV=development webpack --config webpack.config.dev.js -d --colors",
+    "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js -p --colors",
     "test": "npm run test:unit",
     "test:unit": "mocha './test/unit/**/*.js'",
     "test:ui": "nightwatch",
