@@ -8,8 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-
-
 const minify = true;
 const externalStyleSheets = ExtractTextPlugin.extract('style', [
     `css?-url&sourceMap${minify ? '&minimize' : ''}`,
@@ -48,7 +46,7 @@ const config = {
             {
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=8192'
-            } // inline base64 URLs for <=8k images, direct URLs for the rest
+            }
         ]
     },
     plugins: [
@@ -64,12 +62,12 @@ const config = {
         new CleanWebpackPlugin(['dist'], {
             root: process.cwd()
         }),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

@@ -7,12 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-const minify = true;
-const externalStyleSheets = ExtractTextPlugin.extract('style', [
-    `css?-url&sourceMap${minify ? '&minimize' : ''}`,
-    'postcss?sourceMap&outputStyle=expanded'].join('!'));
-
 const inlineStyleSheets = "style-loader!css-loader!postcss-loader";
 
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc').toString());
@@ -49,14 +43,13 @@ const config = {
             {
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=8192'
-            } // inline base64 URLs for <=8k images, direct URLs for the rest
+            }
         ]
     },
     plugins: [
         new ExtractTextPlugin('[name].[chunkhash].css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -66,7 +59,8 @@ const config = {
         new CleanWebpackPlugin(['dist'], {
             root: process.cwd()
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js')
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
+        new webpack.HotModuleReplacementPlugin()
     ],
     postcss: function () {
         return [
