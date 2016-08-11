@@ -7,7 +7,8 @@
     "build:dev": "NODE_ENV=development webpack --config webpack.config.dev.js -d --colors",
     "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js -p --colors",
     "test": "npm run test:unit",
-    "test:unit": "mocha --require ignore-styles --require babel-register './test/unit/**/*.js'",
+    "test:unit": "NODE_ENV=test mocha --require ignore-styles --require babel-register './test/unit/**/*.js'",
+    "test:unit:watch": "npm run test:unit -- -w",
     "test:ui": "nightwatch",
     "deploy": "npm run build:prod && surge dist statham.surge.sh"
   },
@@ -36,6 +37,8 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
     "ignore-styles": "^4.0.0",
+    "jsdom": "9.4.2",
+    "jsdom-global": "2.0.0",
     "live-server": "^1.0.0",
     "mocha": "^3.0.1",
     "nightwatch": "^0.9.6",
