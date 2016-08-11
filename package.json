@@ -7,8 +7,7 @@
     "build:dev": "NODE_ENV=development webpack --config webpack.config.dev.js -d --colors",
     "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js -p --colors",
     "test": "npm run test:unit",
-    "test:ava": "ava --require ignore-styles './test/ava/**/*.js'",
-    "test:unit": "mocha --require ignore-styles --compilers js:babel-register './test/mocha/**/*.js'",
+    "test:unit": "mocha --require ignore-styles --compilers js:babel-register './test/unit/**/*.js'",
     "test:ui": "nightwatch",
     "deploy": "npm run build:prod && surge dist statham.surge.sh"
   },
