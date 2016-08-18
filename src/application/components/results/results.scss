@@ -5,6 +5,7 @@
   width: 14rem;
   background: $silver;
   z-index: 2;
+  overflow-y: auto;
 }
 
 @media (max-width: 400px) {
