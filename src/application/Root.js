@@ -5,9 +5,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
-import Application from './sections/Application';
-import Content from './sections/content/Content';
-import NoContent from './sections/content/NoContent';
+import Application from './components/Application';
+import Content from './components/content/Content';
+import NoContent from './components/content/NoContent';
 
 
 render((
