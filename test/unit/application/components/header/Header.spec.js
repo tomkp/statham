@@ -2,7 +2,7 @@ import 'jsdom-global/register';
 import chai from 'chai';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import Header from '../../../../../src/application/sections/header/Header';
+import Header from '../../../../../src/application/components/header/Header';
 const expect = chai.expect;
 
 
